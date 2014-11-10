@@ -1,5 +1,6 @@
 =========
 Sistemas y Tecnologías Web
+=========
 ![Logo de prac6](http://www.comunicacionvisible.com/wp-content/uploads/2014/01/app.jpg "Logo de prac6")
 =========
 Práctica 6 SYTW: 
