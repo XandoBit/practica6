@@ -45,20 +45,27 @@ class ChatWithFrames < Sinatra::Base
       haml :index
     end
   end
-  #------------------------------------------> GET /*<------------------------------------------------------------------
-  
-  get '/*' do
-    redirect '/'
-  end
 
-
-  #------------------------------------------> GET /Chat <-------------------------------------------------------------------
+   #------------------------------------------> GET /Chat <-------------------------------------------------------------------
   get '/chat' do
     haml :chat
   end
   
   
-  #------------------------------------------> GET /chat-stream <------------------------------------------------------------------
+   #------------------------------------------> POST REGISTER TO CHAT<------------------------------------------------------------------
+  
+  post '/register-to-chat' do
+    username = params[:username]
+    if (not @@clientsByName.has_key? username)
+      session['user'] = username
+      redirect '/chat'
+    else
+      session['error'] = 'Sorry, the username is already taken.'
+      redirect '/'
+    end
+  end 
+
+#------------------------------------------> GET /chat-stream <------------------------------------------------------------------
   
   get '/chat-stream', provides: 'text/event-stream' do
     content_type 'text/event-stream'
@@ -77,7 +84,6 @@ class ChatWithFrames < Sinatra::Base
     end
   end
   
-
   #-----------------------------------------> GET /chat-users <------------------------------------------------------------------
   
   get '/chat-users', provides: 'text/event-stream' do
@@ -88,6 +94,12 @@ class ChatWithFrames < Sinatra::Base
       out.errback { remove_user_stream_client out }
     end
   end
+  
+  
+  
+  
+  
+
   
 
   #------------------------------------------> POST /chat <------------------------------------------------------------------
@@ -113,18 +125,12 @@ class ChatWithFrames < Sinatra::Base
     end
     "Message Sent" 
   end
- #------------------------------------------> POST REGISTER TO CHAT<------------------------------------------------------------------
+
+#------------------------------------------> GET /*<------------------------------------------------------------------
   
-  post '/register-to-chat' do
-    username = params[:username]
-    if (not @@clientsByName.has_key? username)
-      session['user'] = username
-      redirect '/chat'
-    else
-      session['error'] = 'Sorry, the username is already taken.'
-      redirect '/'
-    end
-  end 
+  get '/*' do
+    redirect '/'
+  end
 
 
 #------------------------------------------> DEFINICIONES privadas <------------------------------------------------------------------
