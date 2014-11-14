@@ -148,7 +148,7 @@ class ChatWithFrames < Sinatra::Base
     @@clientsByName.delete username
   end
   
-  def broadcast(message, sender,)
+  def broadcast(message, sender)
     @@clientsByConnection.each_key { |stream| stream << "data: #{sender}: #{message}\n\n" }
   end
   
