@@ -12,8 +12,7 @@
     .cabecera
       %a.button.btn.btn-primary{:href=>'/', :type => "button"} Salir
       %a.button.btn.btn-primary{:href=>'/chat', :type => "button"} Inicio 
-      %p hola :name
-    .span12
+      %p hola #{user.username}
       .global-container
         = yield
 
