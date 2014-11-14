@@ -4,7 +4,7 @@
       
 .login-container
   %p
-    %h1 Bienvenido al chat de SYTW
+    %h1   Bienvenido al chat de SYTW
   %hr
   %form{:class => "form-horizontal", :method => "POST", :action => "/register-to-chat"}
     .control-group
@@ -14,7 +14,7 @@
     .control-group
       %label{:class => "control-label"} Contraseña:
       .controls
-        %input{:type => "text", :name => "username", :placeholder => "Escribe tu contraseña aquí..."}
+        %input{:type => "text", :pass => "contraseña", :placeholder => "Escribe tu contraseña aquí..."}
     .control-group
       .controls
         %button{:class => "btn btn-info"} Enter para ir al chat!

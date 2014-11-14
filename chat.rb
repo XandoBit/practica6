@@ -5,13 +5,14 @@ require 'haml'
 require 'json'
 
 class ChatWithFrames < Sinatra::Base
-  
-  # Server Configuration
+  #------------------------------------------> Configuración del servidor thin <------------------------------------------------------------------
+    # Server Configuration
   configure do
     set server: 'thin', connections: []
     enable :sessions
   end
-  
+  #------------------------------------------> class variables <------------------------------------------------------------------
+
   # Class variables definition and default assignment
   @@clientsByConnection ||= {}
   @@clientsByName ||= {}
@@ -33,7 +34,8 @@ class ChatWithFrames < Sinatra::Base
     end
   end
   
-  # Route definition
+  #------------------------------------------> GET /<------------------------------------------------------------------
+ 
   get '/' do
     if session['error']
       error = session['error']
@@ -43,21 +45,20 @@ class ChatWithFrames < Sinatra::Base
       haml :index
     end
   end
+  #------------------------------------------> GET /*<------------------------------------------------------------------
   
+  get '/*' do
+    redirect '/'
+  end
+
+
+  #------------------------------------------> GET /Chat <-------------------------------------------------------------------
   get '/chat' do
     haml :chat
   end
   
-  post '/register-to-chat' do
-    username = params[:username]
-    if (not @@clientsByName.has_key? username)
-      session['user'] = username
-      redirect '/chat'
-    else
-      session['error'] = 'Sorry, the username is already taken.'
-      redirect '/'
-    end
-  end
+  
+  #------------------------------------------> GET /chat-stream <------------------------------------------------------------------
   
   get '/chat-stream', provides: 'text/event-stream' do
     content_type 'text/event-stream'
@@ -76,6 +77,9 @@ class ChatWithFrames < Sinatra::Base
     end
   end
   
+
+  #-----------------------------------------> GET /chat-users <------------------------------------------------------------------
+  
   get '/chat-users', provides: 'text/event-stream' do
     stream :keep_open do |out|
       add_user_stream_client(out)
@@ -84,6 +88,9 @@ class ChatWithFrames < Sinatra::Base
       out.errback { remove_user_stream_client out }
     end
   end
+  
+
+  #------------------------------------------> POST /chat <------------------------------------------------------------------
   
   post '/chat' do
     message = params[:message]
@@ -106,11 +113,22 @@ class ChatWithFrames < Sinatra::Base
     end
     "Message Sent" 
   end
+ #------------------------------------------> POST REGISTER TO CHAT<------------------------------------------------------------------
   
-  get '/*' do
-    redirect '/'
-  end
-  
+  post '/register-to-chat' do
+    username = params[:username]
+    if (not @@clientsByName.has_key? username)
+      session['user'] = username
+      redirect '/chat'
+    else
+      session['error'] = 'Sorry, the username is already taken.'
+      redirect '/'
+    end
+  end 
+
+
+#------------------------------------------> DEFINICIONES privadas <------------------------------------------------------------------
+ 
   private
   def add_connection(stream, username) 
     @@clientsByConnection[stream] = username
@@ -130,7 +148,7 @@ class ChatWithFrames < Sinatra::Base
     @@clientsByName.delete username
   end
   
-  def broadcast(message, sender)
+  def broadcast(message, sender,)
     @@clientsByConnection.each_key { |stream| stream << "data: #{sender}: #{message}\n\n" }
   end
   
