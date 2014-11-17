@@ -41,6 +41,10 @@ DataMapper.finalize
 #DataMapper.auto_migrate!
 DataMapper.auto_upgrade! # No borra información , actualiza.
 
+
+
+
+
 class ChatWithFrames < Sinatra::Base
   #------------------------------------------> Configuración del servidor thin <------------------------------------------------------------------
     # Server Configuration
@@ -170,6 +174,22 @@ class ChatWithFrames < Sinatra::Base
   end
 
 
+#------------------------------------------> GET /send<------------------------------------------------------------------
+get '/send' do
+  return [404, {}, "Not an ajax request"] unless request.xhr?
+  chat << "#{request.ip} : #{params['text']}"
+  nil
+end
+#------------------------------------------> GET /update<------------------------------------------------------------------
+get '/update' do
+  return [404, {}, "Not an ajax request"] unless request.xhr?
+  @updates = chat[params['last'].to_i..-1] || []
+
+  @last = chat.size
+  erb <<-'HTML', :layout => false      
+end
+
+
 #------------------------------------------> DEFINICIONES privadas <------------------------------------------------------------------
  
   private
@@ -202,5 +222,7 @@ class ChatWithFrames < Sinatra::Base
   end
   
 end
+
+
 
 ChatWithFrames.run!
