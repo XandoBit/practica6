@@ -12,6 +12,7 @@ gem 'sinatra-contrib'
 group :development, :test do
 	gem 'sqlite3'
 	gem "dm-sqlite-adapter"
+	gem 'coveralls',require:false
 end
 
 group :production do
