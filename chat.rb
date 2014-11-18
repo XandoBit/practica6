@@ -1,10 +1,49 @@
 # Imports
 require 'sinatra'
 require 'sinatra/reloader' if development?
-#set :port, 3000
-#set :environment, :production
 require 'haml'
 require 'json'
+require 'rubygems'
+
+require 'uri'
+require 'data_mapper'
+require 'omniauth-oauth2'      
+require 'omniauth-google-oauth2'
+require 'pry'
+require 'erubis'               
+require 'pp'
+require 'chartkick'
+require 'xmlsimple'
+require 'restclient'
+require 'dm-timestamps'
+require 'dm-core'
+require 'dm-types'
+
+#%w( dm-core dm-timestamps dm-types restclient xmlsimple).each  { |lib| require lib}
+
+
+configure :development, :test do
+  DataMapper.setup( :default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/chat.db" )
+end
+
+
+configure :production do #heroku
+  DataMapper.setup(:default, ENV['DATABASE_URL'])
+end
+
+DataMapper::Logger.new($stdout, :debug)
+DataMapper::Model.raise_on_save_failure = true 
+
+require_relative 'model'
+
+DataMapper.finalize
+
+#DataMapper.auto_migrate!
+DataMapper.auto_upgrade! # No borra información , actualiza.
+
+
+
+
 
 class ChatWithFrames < Sinatra::Base
   #------------------------------------------> Configuración del servidor thin <------------------------------------------------------------------
@@ -38,8 +77,6 @@ class ChatWithFrames < Sinatra::Base
   
   #------------------------------------------> GET /<------------------------------------------------------------------
  
-  
-  
   get '/' do
     if session['error']
       error = session['error']
@@ -60,7 +97,7 @@ class ChatWithFrames < Sinatra::Base
   
   post '/register-to-chat' do
     username = params[:username]
-    if (not @@clientsByName.has_key? username)
+    if (not @@clientsByName.has_key? username)   
       session['user'] = username
       redirect '/chat'
     else
@@ -135,26 +172,23 @@ class ChatWithFrames < Sinatra::Base
   get '/*' do
     redirect '/'
   end
-  
-  
+
+
+#------------------------------------------> GET /send<------------------------------------------------------------------
 get '/send' do
   return [404, {}, "Not an ajax request"] unless request.xhr?
   chat << "#{request.ip} : #{params['text']}"
   nil
 end
-
+#------------------------------------------> GET /update<------------------------------------------------------------------
 get '/update' do
   return [404, {}, "Not an ajax request"] unless request.xhr?
   @updates = chat[params['last'].to_i..-1] || []
 
   @last = chat.size
-  erb <<-'HTML', :layout => false
-      <% @updates.each do |phrase| %>
-        <%= phrase %> <br />
-      <% end %>
-      <span data-last="<%= @last %>"></span>
-  HTML
+  erb <<-'HTML', :layout => false      
 end
+
 
 #------------------------------------------> DEFINICIONES privadas <------------------------------------------------------------------
  
@@ -188,5 +222,7 @@ end
   end
   
 end
+
+
 
 ChatWithFrames.run!
