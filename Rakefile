@@ -1,37 +1,26 @@
-desc "run the http server"
-task :default do
-  sh "ruby chat.rb"
+task :default => :server
+
+desc "run the chat server"
+task :server do
+  sh "bundle exec ruby chat.rb"
 end
 
-desc "run the server via rackup"
-task :rackup do
-  sh "rackup"
+desc "make a non Ajax request via curl"
+task :noajax do
+  sh "curl -v http://localhost:4567/update"
 end
 
-# substitute XXX for the name of your app
-desc "create heroku app"
-task :create, :appname do |t,args|
-  name = args[:appname] || 'XXX';
-  sh "heroku create #{name}"
+desc "make an Ajax request via curl"
+task :ajax do
+  sh %q{curl -v -H "X-Requested-With: XMLHttpRequest" localhost:4567/update}
 end
 
-desc "deploy  heroku app"
-task :deploy  do
-  sh "git push heroku master"
+desc "Visit the GitHub repo page"
+task :open do
+  sh "open https://github.com/crguezl/chat-blazee"
 end
 
-desc "ps"
-task :deploy  do
-  sh "heroku ps"
-end
-
-desc "logs"
-task :logs  do
-  sh "heroku logs"
-end
-
-desc "destroy deployment in heroku"
-task :logs, :appname  do
-  name = args[:appname] || 'XXX';
-  sh "heroku apps:destroy #{name}"
+desc "run spec examples"
+task :spec do
+  sh "bundle exec rspec -I. spec/test.rb"
 end
