@@ -1,23 +1,9 @@
-# Imports
-require 'sinatra'
-require 'sinatra/flash'
+require 'sinatra' 
 require 'sinatra/reloader' if development?
-require 'haml'
-require 'json'
-require 'rubygems'
 
 require 'uri'
-require 'data_mapper'
-require 'pry'
-require 'erubis'               
-require 'pp'
-require 'chartkick'
-require 'xmlsimple'
-require 'restclient'
-require 'dm-timestamps'
-require 'dm-core'
-require 'dm-types'
-
+#set :port, 3000
+#set :environment, :production
 
 #------------------------------------------> variable chat<------------------------------------------------------------------
 
