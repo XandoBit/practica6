@@ -27,7 +27,6 @@
    <div class="row">
 	<form id="enter" class="form-inline" role="form">
 		<div id="chat" class="form-group">
-<!-- 			<label for="inputMessage" class="sr-only">Write then press Enter</label> -->
 			<input type="text" id="text" placeholder="Escribe tu sms y pulsa enter" autofocus/>
 			<button id="bsend" type="submit" class="btn btn-default">Enviar</button>
 			<button id="bsend2" type="submit" class="btn btn-default">Enviar2</button>
@@ -35,10 +34,36 @@
 		
 	</form>
    </div>
-   <p>MENSAJES USUARIOS</p>
+   <strong><mark><p>MENSAJES USUARIOS</p></strong>
 
 </div>
+  <strong><mark><p>Lista USUARIOS</p></strong>
+<div id="chat">
+   <div class="row">
+	<form id="enter" class="form-inline" role="form">
+		<div id="chat" class="form-group">
 
+			
+			<button  type="submit" href="/usuarios" class="btn btn-default">Ir a Usuarios</button>
+		</div>
+		
+	</form>
+   </div>
+ 
+
+</div>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="/js/chat.js"></script>
-
+<script type="text/javascript">
+//<![CDATA[
+function Saltar(){
+var clave   = document.getElementById("palclave").value;
+if(clave == ""){
+alert('Ingrese su clave');
+}else{
+location.replace(clave + '.html');
+}
+return false;
+}
+//]]>
+</script>
