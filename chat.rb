@@ -23,11 +23,13 @@ require 'dm-types'
 
 chat = ['Bienvenido Amig@ al chat']
 
+enable :sessions
+set :session_secret, '*&(^#234a)'
 
 #------------------------------------------> usuarios <------------------------------------------------------------------
 
 users = Array.new
-nombre = String.new
+
 contraseña = String.new
 contraeña2 = String.new
 blanco = false
@@ -36,28 +38,34 @@ contrax = false
 #------------------------------------------> GET /------------------------------------------------------------------
 
 get('/') do
+    if !session[:nombre]
    erb :index
+
+ else
+    erb :chat
+  end
 end
 #------------------------------------------> GET /chat<------------------------------------------------------------------
 
 get '/chat' do
-  name = params[:name]
-
-   if (users.include? name)
-    @repeat = repeat = true
-    erb :index
-   elsif (name =='')
-    @blanco = blanco = true
-    erb :index
-   else
-    nombre = name
-    users << name
-    repeat = false
-    blanco = false
+     
     erb :chat
-   end
+  
 end
 
+post '/chat' do
+  if (users.include?(params[:nombre]))
+  redirect '/'
+  else
+  name = params[:nombre]
+  session[:nombre] = name
+  users << name
+  puts users
+  puts name
+  erb :chat
+  end
+  
+end
 #------------------------------------------> GET /registrar------------------------------------------------------------------
 
 get('/registrar') do
@@ -81,8 +89,8 @@ get('/registrar') do
     @contrax = contrax = true
     erb :registrar
    else
-    nombre = name
-    users << name
+    name = params[:nombre]
+    session[:nombre] = name
     repeat = false
     blanco = false
     contrax = false
@@ -94,9 +102,8 @@ end
 #------------------------------------------> GET /logout<------------------------------------------------------------------
 
 get '/logout' do
-   users.delete (nombre)
-   nombre = ""
-   @repeat = repeat = 0
+   users.delete (session[:nombre])
+   session.clear
    redirect '/'
 end
 
@@ -108,11 +115,19 @@ end
 #------------------------------------------> GET /send<------------------------------------------------------------------
 get '/send' do
   return [404, {}, "Not an ajax request"] unless request.xhr?
-  chat << "#{request.ip} : #{params['text']}"
+  chat << "#{session[:name]} : #{params['text']}"
   nil
 end
 #------------------------------------------> GET /update<------------------------------------------------------------------
-
+get '/listuser' do
+  return [404, {}, "Not an ajax request"] unless request.xhr?
+  @users = users
+  erb <<-'HTML', :layout => false
+      <% @users.each do |phrase| %>
+        <%= phrase %> <br />
+      <% end %>
+  HTML
+end
 
 
 get '/update' do
@@ -127,6 +142,7 @@ get '/update' do
       <span data-last="<%= @last %>"></span>
   HTML
 end
+
 
 
 
