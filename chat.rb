@@ -32,6 +32,7 @@ contraseña = String.new
 contraeña2 = String.new
 blanco = false
 repeat = false
+contrax = false
 #------------------------------------------> GET /------------------------------------------------------------------
 
 get('/') do
@@ -40,7 +41,7 @@ end
 #------------------------------------------> GET /chat<------------------------------------------------------------------
 
 get '/chat' do
-   name = params[:name]
+  name = params[:name]
 
    if (users.include? name)
     @repeat = repeat = true
@@ -55,6 +56,40 @@ get '/chat' do
     blanco = false
     erb :chat
    end
+end
+
+#------------------------------------------> GET /registrar------------------------------------------------------------------
+
+get('/registrar') do
+    name = params[:name]
+    pass = params[:contra1]
+    pass2 = params[:contra2]
+
+   if (users.include? name)
+    @repeat = repeat = true
+    erb :registrar
+   elsif (name =='')
+    @blanco = blanco = true
+    erb :registrar
+   elsif (pass2 != pass)
+    @contrax = contrax = true
+    erb :registrar
+   elsif (pass2 == '')
+    @contrax = contrax = true
+    erb :registrar
+   elsif (pass == '')
+    @contrax = contrax = true
+    erb :registrar
+   else
+    nombre = name
+    users << name
+    repeat = false
+    blanco = false
+    contrax = false
+    erb :chat
+   end
+
+   
 end
 #------------------------------------------> GET /logout<------------------------------------------------------------------
 
