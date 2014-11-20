@@ -1,22 +1,16 @@
-source 'http://rubygems.org'
-gem 'sinatra'
+source 'https://rubygems.org'
+
 gem 'thin'
-gem 'json'
-gem 'data_mapper'
-gem 'sinatra-contrib'
-
-
-
-
+gem 'sinatra'
 
 group :development, :test do
-	gem 'sqlite3'
-	gem "dm-sqlite-adapter"
-	gem 'coveralls',require:false
-	gem 'selenium-webdriver','2.43.0'
-end
-
-group :production do
-    gem "pg"
-    gem "dm-postgres-adapter"
+  gem 'sinatra-contrib'
+  gem 'rake'
+  gem "rspec", ">= 1.2.1"
+  gem "capybara", ">= 1.1.2"
+  gem "selenium-webdriver"
+  gem "poltergeist"
+  gem "rack-test"
+  gem "rake"
+  gem 'coveralls', require: false
 end
