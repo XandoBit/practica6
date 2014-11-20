@@ -26,7 +26,7 @@ contrax = false
 #------------------------------------------> GET /------------------------------------------------------------------
 
 get('/') do
-    if !session[:nombre]
+    if !session[:name]
    erb :index
 
  else
@@ -80,8 +80,8 @@ get('/registrar') do
     @contrax = contrax = true
     erb :registrar
    else
-    name = params[:nombre]
-    session[:nombre] = name
+    name = params[:name]
+    session[:name] = name
     repeat = false
     blanco = false
     contrax = false
