@@ -16,19 +16,19 @@ RSpec.configure do |config|
   config.order = :random
 end
 
-urlchat = ''
+urlchat = 'https://chat-p7.herokuapp.com'
 
 describe 'make API call to load path', :type => :feature do 
   it "should load the home page" do
     visit "#{urlchat}"
-    expect(page).to have_content("Regístrate")
+    expect(page).to have_content("Bienvenido al chat de SYTW")
   end
 end
 
 describe 'make API call to load chat and to found elements' do
   it "should load the chat page" do
     visit "#{urlchat}/chat"
-    expect(page).to have_content("welcome")
+    expect(page).to have_content("Usuarios conectados")
   end
 end
 
