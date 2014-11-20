@@ -2,7 +2,7 @@ task :default => :server
 
 desc "run the chat server"
 task :server do
-  sh "ruby chat.rb"
+  sh "bundle exec ruby chat.rb"
 end
 
 desc "make a non Ajax request via curl"
@@ -18,4 +18,14 @@ end
 desc "Visit the GitHub repo page"
 task :open do
   sh "open https://github.com/crguezl/chat-blazee"
+end
+
+desc "run selenium-capybara examples"
+task :selenium do
+  sh "bundle exec rspec -I. test/test.rb"
+end
+
+desc "Run server"
+    task :server do
+      sh "rackup"
 end
