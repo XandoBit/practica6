@@ -5,6 +5,8 @@ require 'uri'
 #set :port, 3000
 #set :environment, :production
 
+
+
 #------------------------------------------> variable chat<------------------------------------------------------------------
 
 chat = ['Bienvenido Amig@ al chat']
@@ -14,17 +16,17 @@ set :session_secret, '*&(^#234a)'
 
 #------------------------------------------> usuarios <------------------------------------------------------------------
 
-users = Array.new
+users = Array.new()
 
 contraseña = String.new
-contraseña2 = String.new
+contraeña2 = String.new
 blanco = false
 repeat = false
 contrax = false
 #------------------------------------------> GET /------------------------------------------------------------------
 
 get('/') do
-    if !session[:name]
+    if !session[:nombre]
    erb :index
 
  else
@@ -40,17 +42,20 @@ get '/chat' do
 end
 
 post '/chat' do
+
   if (users.include?(params[:name]))
   redirect '/'
   else
   name = params[:name]
   session[:name] = name
   users << name
-  puts users
-  #puts name
+  puts "Este es el usuario de la sesion: #{session[:name]} y de la variable: #{users}"
+
   erb :chat
   end
   
+
+
 end
 #------------------------------------------> GET /registrar------------------------------------------------------------------
 
@@ -59,7 +64,7 @@ get('/registrar') do
     pass = params[:contra1]
     pass2 = params[:contra2]
 
-    if (users.include?(params[:name]))
+   if (users.include? name)
     @repeat = repeat = true
     erb :registrar
    elsif (name =='')
@@ -75,8 +80,8 @@ get('/registrar') do
     @contrax = contrax = true
     erb :registrar
    else
-    name = params[:name]
-    session[:name] = name
+    name = params[:nombre]
+    session[:nombre] = name
     repeat = false
     blanco = false
     contrax = false
@@ -97,22 +102,35 @@ end
 #------------------------------------------> GET /*<------------------------------------------------------------------
   
   
+get '/nombres' do
+   enviar = "<ul id='listuser'>"
+   users.each do | name |
+     enviar = enviar + "<li>" + user.to_s + "</li>"
+   end
+   enviar = enviar + "</ul>"
+   enviar.to_s
+end
 
 #------------------------------------------> GET /send<------------------------------------------------------------------
+
+
 get '/send' do
   return [404, {}, "Not an ajax request"] unless request.xhr?
-  chat << "#{session[:name]} : #{params['text']}"
+  chat << ("#{session[:name]} :::: #{params['text']}" + "<hr>")
   nil
 end
+
 #------------------------------------------> GET /update<------------------------------------------------------------------
 get '/listuser' do
   return [404, {}, "Not an ajax request"] unless request.xhr?
   @users = users
+  puts @users
   erb <<-'HTML', :layout => false
       <% @users.each do |phrase| %>
         <%= phrase %> <br />
       <% end %>
   HTML
+   
 end
 
 

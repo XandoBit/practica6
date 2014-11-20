@@ -16,6 +16,7 @@
  ============================================================ */
 body {
     font-family: 'Open Sans', sans-serif;
+    background:url('login3.jpg');
 }
 
 .pad-top {
@@ -71,6 +72,31 @@ h2 {
         color: #fff;
         padding: 17px 12px;
     }
+div#usuarios {
+    
+    margin-top: 55px;
+    margin-left: 255px;
+    margin-right: 255px;
+    background: url(/background.jpg) no-repeat center center;
+    padding: 0;
+    -webkit-background-size: cover;
+    background-size: cover;
+    -moz-background-size: cover;
+    overflow-y: scroll;
+    font-color:red;
+   
+}
+
+#chat{ 
+    margin-top: 55px;
+    margin-left: 255px;
+    margin-right: 255px;
+    background: url(../img/panelogin.jpg) no-repeat center center;
+    padding: 0;
+    -webkit-background-size: cover;
+    background-size: cover;
+    -moz-background-size: cover;
+    overflow-y: scroll;}
 /* =============================================================
   HOME SECTION STYLES
  ============================================================ */

@@ -11,7 +11,7 @@
 	  <div class="navbar-collapse collapse">
 		 <ul class="nav navbar-nav navbar-right">
 		 	<li><a href="/chat">Chat</a></li>
-			<li><a href="/login">Login</a></li>
+			<li><a href="/">Login</a></li>
 			<li><a href="/registrar">Registrar</a></li>
 			<li><a href="/logout">Salir</a></li>
 		 </ul>
@@ -52,7 +52,7 @@
 			   <% end %>
 			</div>
 
-			<form action="/chat" method="GET" name="input" role="form">
+			<form action="/chat" method="POST" name="input" role="form">
 			   <div class="form-group">
 				  <label for="name"></label>
 				  <input id="name" name="name" type="text" class="form-control" placeholder="Username"></input>
