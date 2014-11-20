@@ -54,7 +54,7 @@
 
 			<form action="/chat" method="GET" name="input" role="form">
 			   <div class="form-group">
-				  <label for="name"></label>
+				  <label for="nombre"></label>
 				  <input id="name" name="name" type="text" class="form-control" placeholder="Username"></input>
 				  <input id="contraseña" name="pass" type="text" class="form-control" placeholder="Contraseña"></input>
 			   </div>

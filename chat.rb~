@@ -59,7 +59,7 @@ get('/registrar') do
     pass = params[:contra1]
     pass2 = params[:contra2]
 
-    if (users.include?(params[:name]))
+   if (users.include? name)
     @repeat = repeat = true
     erb :registrar
    elsif (name =='')

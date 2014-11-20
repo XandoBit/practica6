@@ -19,4 +19,11 @@ $('#boton1').click(
    }
 );
 
+$('#boton2').click(
+   function(){
+    $.get('/send',{text:$('#text').val()});
+    $('#text').val('');
+   }
+);
+
 
