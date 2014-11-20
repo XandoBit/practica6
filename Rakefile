@@ -20,7 +20,12 @@ task :open do
   sh "open https://github.com/crguezl/chat-blazee"
 end
 
-desc "run spec examples"
-task :spec do
-  sh "bundle exec rspec -I. spec/test.rb"
+desc "run selenium-capybara examples"
+task :selenium do
+  sh "bundle exec rspec -I. test/test.rb"
+end
+
+desc "Run server"
+    task :server do
+      sh "rackup"
 end
