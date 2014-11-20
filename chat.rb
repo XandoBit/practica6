@@ -9,7 +9,7 @@ require 'uri'
 
 #------------------------------------------> variable chat<------------------------------------------------------------------
 
-chat = ['Bienvenido Amig@ al chat']
+chat = ['Bienvenido Amig@ al chat SYTW']
 
 enable :sessions
 set :session_secret, '*&(^#234a)'
