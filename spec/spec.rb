@@ -14,7 +14,7 @@ describe "Testing specs" do
    end
     
     it "Without session init" do
-       get '/', {}, 'rack.session' => { :name => 'Testing' }
+       get '/', {}, 'rack.session' => { :name => 'name' }
        expect(last_response).to be_ok
     end
     
@@ -24,7 +24,7 @@ describe "Testing specs" do
     end
     
     it "Testing post" do
-       post '/'
+       post '/chat' , params = {:name => 'rushil'}
        expect(last_response).to be_ok
     end
 
@@ -38,3 +38,4 @@ describe "Testing specs" do
     get '/update'
     expect(last_response.body).to eq("Not an ajax request")
     end
+end  
