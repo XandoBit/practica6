@@ -14,14 +14,14 @@ Deberán registrarse los usuarios.Si el nombre del usuario esta tomado se señal
 Escriba las pruebas. Use Selenium 
 
 -------------------------------------
-# Enlaces
+# Enlaces de la APP 
 
-### StaticPage:
+### Enlace de: StaticPage
 [Ir a la static Page](http://xandobit.github.io/webpageSYTW.github.io/)
-### Heroku: 
+### Enlace de: Heroku
 [Ir a App en Heroku](https://chat-p7.herokuapp.com/)
 
-### Travis: 
+### Enlace de: Travis
 [![Build Status](https://travis-ci.org/XandoBit/practica6.svg?branch=master)](https://travis-ci.org/XandoBit/practica6)
 
 -------------------------------------
