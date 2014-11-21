@@ -73,30 +73,40 @@ h2 {
         padding: 17px 12px;
     }
 div#usuarios {
-    
+    border-radius: 23px 23px 0px 0px;
+    -moz-border-radius: 23px 23px 0px 0px;
+    -webkit-border-radius: 23px 23px 0px 0px;
+    border: 6px double #000000;  
     margin-top: 55px;
     margin-left: 255px;
     margin-right: 255px;
-    background: url(/background.jpg) no-repeat center center;
+    background: url(/img/azul_claro.jpg) no-repeat center center;
     padding: 0;
     -webkit-background-size: cover;
     background-size: cover;
     -moz-background-size: cover;
-    overflow-y: scroll;
-    font-color:red;
+    color:red;
+    font-size:15px;
+    text-align:center;
+
    
 }
 
 #chat{ 
+    border-radius: 23px 23px 23px 23px;
+    -moz-border-radius: 23px 23px 23px 23px;
+    -webkit-border-radius: 23px 23px 23px 23px;
+    border: 6px double #000000; 
     margin-top: 55px;
     margin-left: 255px;
     margin-right: 255px;
-    background: url(../img/panelogin.jpg) no-repeat center center;
+    background: url(../img/azul_claro.jpg) no-repeat center center;
     padding: 0;
     -webkit-background-size: cover;
     background-size: cover;
     -moz-background-size: cover;
-    overflow-y: scroll;}
+    color:black;
+    }
 /* =============================================================
   HOME SECTION STYLES
  ============================================================ */

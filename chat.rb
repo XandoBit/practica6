@@ -1,9 +1,22 @@
-require 'sinatra' 
+# Imports
+require 'sinatra'
+require 'sinatra/flash'
 require 'sinatra/reloader' if development?
+require 'haml'
+require 'json'
+require 'rubygems'
 
 require 'uri'
-#set :port, 3000
-#set :environment, :production
+require 'data_mapper'
+require 'pry'
+require 'erubis'               
+require 'pp'
+require 'chartkick'
+require 'xmlsimple'
+require 'restclient'
+require 'dm-timestamps'
+require 'dm-core'
+require 'dm-types'
 
 
 #------------------------------------------> variable chat<------------------------------------------------------------------
@@ -122,7 +135,7 @@ end
 
 get '/send' do
   return [404, {}, "Not an ajax request"] unless request.xhr?
-  chat << ("#{session[:name]} :::: #{params['text']}" + "<hr>")
+  chat << ("-#{session[:name]} ---> #{params['text']}" + "<br>")
   nil
 end
 
@@ -133,7 +146,9 @@ get '/listuser' do
   puts @users
   erb <<-'HTML', :layout => false
       <% @users.each do |phrase| %>
+     
         <%= phrase %> <br />
+
       <% end %>
   HTML
    
