@@ -9,19 +9,15 @@ Autores: Rushil Lakhani Lakhani & Adán Rafael López Lecuona.
 
 ###Objetivo
 
-*Modifique el chat visto en la sección Un Chat con Ajax y JQuery 36.4 para que:
-*Deberán registrarse los usuarios.Si el nombre del usuario esta tomado se señalara el error y se le pedirá que cambie de nombre.
-*Una vez en el chat:
-*En un contenedor aparecen los nombres de usuario.
-*En otro los mensajes.
-*En un tercero con un botón send la entrada para el siguiente mensaje del usuario.
-*Escriba las pruebas. Use Selenium 
+Modifique el chat visto en la sección Un Chat con Ajax y JQuery 36.4 para que:
+Deberán registrarse los usuarios.Si el nombre del usuario esta tomado se señalara el error y se le pedirá que cambie de nombre.Una vez en el chat, en un contenedor aparecen los nombres de usuario,en otro los mensajes y en un tercero con un botón send la entrada para el siguiente mensaje del usuario.
+Escriba las pruebas. Use Selenium 
 
 -------------------------------------
-## Enlaces
+# Enlaces
 
-
-### Heroku: [ACCEDER](https://chat-p7.herokuapp.com/)
+### StaticPage:[Ir a la static Page](http://xandobit.github.io/webpageSYTW.github.io/)
+### Heroku: [Ir a App en Heroku](https://chat-p7.herokuapp.com/)
 
 ### Travis: 
 [![Build Status](https://travis-ci.org/XandoBit/practica6.svg?branch=master)](https://travis-ci.org/XandoBit/practica6)
