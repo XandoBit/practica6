@@ -17,9 +17,7 @@ set :session_secret, '*&(^#234a)'
 #------------------------------------------> usuarios <------------------------------------------------------------------
 
 users = Array.new()
-blanco = false
-repeat = false
-contrax = false
+
 #------------------------------------------> GET /------------------------------------------------------------------
 
 get('/') do
@@ -39,15 +37,20 @@ end
 
 post '/chat' do
 
+  @blanco = false;
+  @repeat = false;
   if (users.include?(params[:name]))
-  repeat = true
-  redirect '/'
+    puts "Fallo 1"
+  @repeat = true
+  erb :index, :layout =>false
   elsif(params[:name]== '')
-  blanco = true
-  redirect '/'
+    puts "Fallo 2"
+  @blanco = true
+  erb :index, :layout =>false
   elsif(params[:pass1]== '')
-  blanco= true
-  redirect '/'
+    puts "Fallo 3"
+  @blanco= true
+  erb :index, :layout =>false
   else
   name = params[:name]
   session[:name] = name
@@ -64,30 +67,37 @@ end
 
 post('/registrar') do
     name = params[:name]
-    pass = params[:pass1]
-    pass2 = params[:pass2]
+    
+    @repeat = false;
+    @contrax = false;
+    @blanco = false;
 
    if (users.include? name)
-    @repeat = repeat = true
+    puts "Fallo 1"
+    @repeat =  true
     erb :registrar, :layout =>false
    elsif (name =='')
-    @blanco = blanco = true
+    puts "Fallo 2"
+    @blanco = true
     erb :registrar, :layout =>false
    elsif (pass2 != pass)
-    @contrax = contrax = true
+    puts "Fallo 3"
+    @contrax =  true
     erb :registrar, :layout =>false
    elsif (pass2 == '')
-    @contrax = contrax = true
+    puts "Fallo 4"
+    @contrax =  true
     erb :registrar, :layout =>false
    elsif (pass == '')
-    @contrax = contrax = true
+    puts "Fallo 5"
+    @contrax = true
     erb :registrar, :layout =>false
    else
     name = params[:name]
     session[:name] = name
-    repeat = false
-    blanco = false
-    contrax = false
+    @repeat = false
+    @blanco = false
+    @contrax = false
     erb :chat, :layout =>false
    end
 

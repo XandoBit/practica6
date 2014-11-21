@@ -65,6 +65,18 @@
 	  <div class="container">
 	  	<div class="row text-center">
            <h3><strong><mark>Registrate</strong></h3>
+           			<div id="warning-message" style="color:red">
+ <!-----------------------------condiciones-->
+			   <% if @repeat == true %>
+				  <p class="bg-danger">EL username introducido no es válido, ya está creado!</p>
+			   <% end %>
+			   <% if @blanco == true %>
+				  <p class="bg-danger">Debes introducir un nombre de usuario o contraseña</p>
+			   <% end %>
+			      <% if @contrax == true %>
+				  <p class="bg-danger">Las contraseñas no son iguales!</p>
+			   <% end %>
+			</div>
  <!-----------------------------fprmularo-->
 			<form action="/chat" method="POST" name="input" role="form">
 			   <div class="form-group">
