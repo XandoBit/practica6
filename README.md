@@ -24,4 +24,7 @@ Escriba las pruebas. Use Selenium
 ### Enlace de: Travis
 [![Build Status](https://travis-ci.org/XandoBit/practica6.svg?branch=master)](https://travis-ci.org/XandoBit/practica6)
 
+### Enlace de Coveralls
+[![Coverage Status](https://coveralls.io/repos/XandoBit/practica6/badge.png)](https://coveralls.io/r/XandoBit/practica6)
+
 -------------------------------------
