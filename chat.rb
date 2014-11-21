@@ -40,15 +40,15 @@ post '/chat' do
   @blanco = false;
   @repeat = false;
   if (users.include?(params[:name]))
-    puts "Fallo 1"
+    puts "Fallo 1 - usuario ya creado"
   @repeat = true
   erb :index, :layout =>false
   elsif(params[:name]== '')
-    puts "Fallo 2"
+    puts "Fallo 2 - nombre en blanco"
   @blanco = true
   erb :index, :layout =>false
   elsif(params[:pass1]== '')
-    puts "Fallo 3"
+    puts "Fallo 3 - contraseña en blanco"
   @blanco= true
   erb :index, :layout =>false
   else
