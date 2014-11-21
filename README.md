@@ -17,23 +17,13 @@ Autores: Rushil Lakhani Lakhani & Adán Rafael López Lecuona.
 *En un tercero con un botón send la entrada para el siguiente mensaje del usuario.
 *Escriba las pruebas. Use Selenium 
 
-1. 
-
-2. 
-  * [Repositorio de GitHub](https://github.com/XandoBit/practica6)
-3. Desarrollamos la app.
-4. Desarrollamos los tests.
-5. Desarrollamos el diseño de la app.
-6. Subimos la App a Heroku:
-  * [App en Heroku](https://prac6.herokuapp.com)
-
-  
- 
-Static Page de la práctica 6:
-  * [Ir a static page de Github](http://xandobit.github.io/webpageSYTW.github.io/) 
+-------------------------------------
+## Enlaces
 
 
+### Heroku: [ACCEDER](https://chat-p7.herokuapp.com/)
 
-Recursos A Usar
- 
--
+### Travis: 
+[![Build Status](https://travis-ci.org/XandoBit/practica6.svg?branch=master)](https://travis-ci.org/XandoBit/practica6)
+
+-------------------------------------
