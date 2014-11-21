@@ -40,4 +40,12 @@ describe 'make API sign in whith a specific name' do
     visit "#{urlchat}/chat"
     expect(page).to have_content("Rushil")     
   end
+
+  describe 'chat page' do
+   it 'have a chat with the chat' do
+      visit "#{urlchat}/chat"
+      fill_in 'text', :with => 'Ey'
+      #click_on('')
+      #expect(page).to have_content('')
+   end
 end
