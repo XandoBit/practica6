@@ -1,4 +1,4 @@
-/*(function() {
+(function() {
   
    setInterval(
     function(){
@@ -10,7 +10,7 @@
       );
     },
   1000);
-})();*/
+})();
 
 $('#text').keypress(
   function(e){
