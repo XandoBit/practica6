@@ -21,7 +21,7 @@ urlchat = 'https://chat-p7.herokuapp.com'
 describe 'make API call to load path', :type => :feature do 
   it "should load the home page" do
     visit "#{urlchat}"
-    expect(page).to have_content("Bienvenido al chat de SYTW")
+    expect(page).to have_content("Registrar")
   end
 end
 
@@ -35,8 +35,8 @@ end
 describe 'make API sign in whith a specific name' do
   it 'user login' do
     visit "#{urlchat}"
-    fill_in 'usuario', :with => 'Rushil'
-    click_on('Regístrate')
+    fill_in 'name', :with => 'Rushil'
+    click_on('Click para ir al chat.')
     visit "#{urlchat}/chat"
     expect(page).to have_content("Rushil")     
   end
