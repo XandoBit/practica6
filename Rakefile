@@ -21,7 +21,7 @@ task :open do
 end
 
 desc "run selenium-capybara examples"
-task :selenium do
+task :test do
   sh "bundle exec rspec -I. test/test.rb"
 end
 
