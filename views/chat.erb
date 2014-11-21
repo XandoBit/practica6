@@ -1,3 +1,47 @@
+
+<html>
+   <head>
+	  <meta content="text/html, charset=utf-8" http-equiv="Content-Type"/>
+	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	  <!--[if IE]>
+		 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <![endif]-->
+	  <title> Chat SYTW</title>
+	  <!-- BOOTSTRAP CORE STYLE  -->
+	  <link href="/css/bootstrap.css" rel="stylesheet"/>
+	  <!-- FONT AWESOME ICON STYLE  -->
+	  <link href="/css/font-awesome.css" rel="stylesheet"/>
+	  <!-- PRETTYPHOTO STYLE  -->
+	  <link href="/css/prettyPhoto.css" rel="stylesheet"/>
+	  <!-- CUSTOM STYLE CSS -->
+	  <link href="/css/style.css" rel="stylesheet"/>
+	  <!-- CUSTOM THEME COLOR - YOU CAN USE LIGHT & DARK THEMES  -->
+	  <link href="/css/themes/dark.css" rel="stylesheet"/>
+<!--     <link href="/css/themes/dark.css" rel="stylesheet"/> -->
+	  <!-- GOOGLE FONT -->
+	  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   </head>
+   <body >
+ <!----------------------------- stilo mostrar usuarios-->
+<style >
+
+#listuser {
+  
+  height: 300px;
+    overflow-y: scroll;
+    background:url('login3.jpg');
+    border: 1px solid #000;
+    padding: 10px;
+    margin-top: 100px;
+  color: black;
+  
+}
+
+
+</style>
+
+
+ <!-----------------------------botones cabecera-->
 <div class="navbar navbar-inverse navbar-fixed-top scrollclass">
    <div class="container">
 	  <div class="navbar-header">
@@ -15,22 +59,9 @@
 	  </div>
    </div>
 </div>
-<style >
 
-#listuser {
-  
-  height: 300px;
-    overflow-y: scroll;
-    background:url('login3.jpg');
-    border: 1px solid #000;
-    padding: 10px;
-    margin-top: 100px;
-  color: black;
-  
-}
-
-
-</style>
+ <!-----------------------------seccion del chat-->
+<div id="home-sec">
 <div id="chat">
    <div class="row">
 	<form id="enter" class="form-inline" role="form">
@@ -45,38 +76,35 @@
    </div>
    <strong><mark><p>Mensajes del chat</p></strong>
 
-</div>
-
-
- 
-
-	
-		
+   </div>
+  <!-----------------------------listar usuarios conectados-->
 		
 	
 	    <div id="usuarios" name="usuarios">
 	    	 <strong><mark><p>Usuarios conectados</p></strong>
 	    	<div id="listuser"></div></div>
 	    <br>
-	   
-		
+        </div>
+  <!-----------------------------scripts-->
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="/js/chat.js"></script>
+	<script src="/js/usuarios.js"></script>
+	<script src="/css/style.css"></script>
+	<script src="/styles.css"></script>
+	<script type="text/javascript"></script>
 
 
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="/js/chat.js"></script>
-<script src="/js/usuarios.js"></script>
-<script src="/css/style.css"></script>
-<script src="/styles.css"></script>
-<script type="text/javascript">
 
-function Saltar(){
-var clave   = document.getElementById("palclave").value;
-if(clave == ""){
-alert('Ingrese su clave');
-}else{
-location.replace(clave + '.html');
-}
-return false;
-}
-//]]>
-</script>
+ <!-----------------------------FOOTER-->
+	  <section id="location-sec">
+		 <div class="container">
+			<div class="row text-center min-set">
+			   <div class="col-md-12">
+				  SYTW 2014. Autores: Rushil Lakhani Lakhani & Adán Rafael López Lecuona. <br>
+				  
+               </div>
+            </div>
+        </div>
+	  </section>
+   </body>
+</html>

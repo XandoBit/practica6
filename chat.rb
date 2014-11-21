@@ -1,15 +1,27 @@
-require 'sinatra' 
+# Imports
+require 'sinatra'
+require 'sinatra/flash'
 require 'sinatra/reloader' if development?
+require 'haml'
+require 'json'
+require 'rubygems'
 
 require 'uri'
-#set :port, 3000
-#set :environment, :production
-
+require 'data_mapper'
+require 'pry'
+require 'erubis'               
+require 'pp'
+require 'chartkick'
+require 'xmlsimple'
+require 'restclient'
+require 'dm-timestamps'
+require 'dm-core'
+require 'dm-types'
 
 
 #------------------------------------------> variable chat<------------------------------------------------------------------
 
-chat = ['Bienvenido Amig@ al chat SYTW']
+chat = ['Bienvenido Amig@ al chat']
 
 enable :sessions
 set :session_secret, '*&(^#234a)'
@@ -17,28 +29,36 @@ set :session_secret, '*&(^#234a)'
 #------------------------------------------> usuarios <------------------------------------------------------------------
 
 users = Array.new()
-
-contraseña = String.new
-contraeña2 = String.new
 blanco = false
 repeat = false
 contrax = false
 #------------------------------------------> GET /------------------------------------------------------------------
 
 get('/') do
-   erb :index
+    
+   erb :index, :layout => false
+
+ 
+ 
 end
 #------------------------------------------> GET /chat<------------------------------------------------------------------
 
 get '/chat' do
      
-    erb :chat
+    erb :chat, :layout => false
   
 end
 
 post '/chat' do
 
   if (users.include?(params[:name]))
+  repeat = true
+  redirect '/'
+  elsif(params[:name]== '')
+  blanco = true
+  redirect '/'
+  elsif(params[:pass1]== '')
+  blanco= true
   redirect '/'
   else
   name = params[:name]
@@ -46,7 +66,7 @@ post '/chat' do
   users << name
   puts "Este es el usuario de la sesion: #{session[:name]} y de la variable: #{users}"
 
-  erb :chat
+  erb :chat, :layout =>false
   end
   
 
@@ -54,36 +74,40 @@ post '/chat' do
 end
 #------------------------------------------> GET /registrar------------------------------------------------------------------
 
-get('/registrar') do
+post('/registrar') do
     name = params[:name]
-    pass = params[:contra1]
-    pass2 = params[:contra2]
+    pass = params[:pass1]
+    pass2 = params[:pass2]
 
    if (users.include? name)
     @repeat = repeat = true
-    erb :registrar
+    erb :registrar, :layout =>false
    elsif (name =='')
     @blanco = blanco = true
-    erb :registrar
+    erb :registrar, :layout =>false
    elsif (pass2 != pass)
     @contrax = contrax = true
-    erb :registrar
+    erb :registrar, :layout =>false
    elsif (pass2 == '')
     @contrax = contrax = true
-    erb :registrar
+    erb :registrar, :layout =>false
    elsif (pass == '')
     @contrax = contrax = true
-    erb :registrar
+    erb :registrar, :layout =>false
    else
     name = params[:name]
     session[:name] = name
     repeat = false
     blanco = false
     contrax = false
-    erb :chat
+    erb :chat, :layout =>false
    end
 
    
+end
+
+get ('/registrar') do
+ erb :registrar, :layout =>false
 end
 #------------------------------------------> GET /logout<------------------------------------------------------------------
 

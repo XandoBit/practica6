@@ -1,3 +1,28 @@
+<html>
+   <head>
+	  <meta content="text/html, charset=utf-8" http-equiv="Content-Type"/>
+	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	  <!--[if IE]>
+		 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <![endif]-->
+	  <title> Chat SYTW</title>
+	  <!-- BOOTSTRAP CORE STYLE  -->
+	  <link href="/css/bootstrap.css" rel="stylesheet"/>
+	  <!-- FONT AWESOME ICON STYLE  -->
+	  <link href="/css/font-awesome.css" rel="stylesheet"/>
+	  <!-- PRETTYPHOTO STYLE  -->
+	  <link href="/css/prettyPhoto.css" rel="stylesheet"/>
+	  <!-- CUSTOM STYLE CSS -->
+	  <link href="/css/style.css" rel="stylesheet"/>
+	  <!-- CUSTOM THEME COLOR - YOU CAN USE LIGHT & DARK THEMES  -->
+	  <link href="/css/themes/dark.css" rel="stylesheet"/>
+<!--     <link href="/css/themes/dark.css" rel="stylesheet"/> -->
+	  <!-- GOOGLE FONT -->
+	  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+   </head>
+   <body >
+ <!-----------------------------botones inicio-->
 <div class="navbar navbar-inverse navbar-fixed-top scrollclass">
    <div class="container">
 	  <div class="navbar-header">
@@ -10,13 +35,14 @@
 	  </div>
 	  <div class="navbar-collapse collapse">
 		 <ul class="nav navbar-nav navbar-right">
-			<li><a href="/login">Login</a></li>
+			<li><a href="/">Login</a></li>
 			<li><a href="/registrar">Registrar</a></li>
 			<li><a href="/logout">Salir</a></li>
 		 </ul>
 	  </div>
    </div>
 </div>
+ <!-----------------------------parte central-->
 <div id="home-sec">
    <div class="overlay">
 	  <div class="container">
@@ -33,22 +59,19 @@
 	  
    </div>
 </div>
-
-
-
-
+ <!-----------------------------formulario registrar-->
 <section id="skill-sec">
    <div class="overlay">
 	  <div class="container">
 	  	<div class="row text-center">
-           <h3><strong><mark>Login</strong></h3>
-
-			<form action="/chat" method="GET" name="input" role="form">
+           <h3><strong><mark>Registrate</strong></h3>
+ <!-----------------------------fprmularo-->
+			<form action="/chat" method="POST" name="input" role="form">
 			   <div class="form-group">
 				  <label for="name"></label>
-				  <input id="nombre" name="name" type="text" class="form-control" placeholder="Username"></input>
-				  <input id="contraseña" name="pass" type="text" class="form-control" placeholder="Contraseña"></input>
-				  <input id="contraseña2" name="pass2" type="text" class="form-control" placeholder="Repetir Contraseña"></input>
+				  <input id="name" name="name" type="text" class="form-control" placeholder="Username"></input>
+				  <input id="pass1" name="pass1" type="text" class="form-control" placeholder="Contraseña"></input>
+				  <input id="pass2" name="pass2" type="text" class="form-control" placeholder="Repetir Contraseña"></input>
 			   </div>
 			   <input class="btn btn-info" id="enter" type="submit" value="Click para registrarte."></input>
 			</form>
@@ -56,3 +79,25 @@
 	  </div>
    </div>
 </section>
+<!-----------------------------scripts-->
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="/js/chat.js"></script>
+	<script src="/js/usuarios.js"></script>
+	<script src="/css/style.css"></script>
+	<script src="/styles.css"></script>
+	<script type="text/javascript"></script>
+
+
+	 <!-----------------------------footer-->
+	  <section id="location-sec">
+		 <div class="container">
+			<div class="row text-center min-set">
+			   <div class="col-md-12">
+				  SYTW 2014. Autores: Rushil Lakhani Lakhani & Adán Rafael López Lecuona. <br>
+				  
+               </div>
+            </div>
+        </div>
+	  </section>
+   </body>
+</html>
